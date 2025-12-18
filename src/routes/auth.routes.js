@@ -1,8 +1,9 @@
 import express from "express"
-import { login } from "../controllers/auth.controllers.js"
+import { login, refresh } from "../controllers/auth.controllers.js"
 
 const routes = express.Router()
 
 routes.post("/login", login)
+routes.post("/refresh", refresh)
 
 export default routes;

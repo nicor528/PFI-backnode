@@ -1,4 +1,4 @@
-import {agregarProducto, eliminarProducto, obtenerProducto, obtenerProductos} from "../models/products.models.js";
+import {actualizarProducto, agregarProducto, eliminarProducto, obtenerProducto, obtenerProductos} from "../models/products.models.js";
 
 export const addProductService = async (product) => {
   return(
@@ -29,7 +29,7 @@ export const deleteProductService = async (id) => {
   )
 }
 
-/*
+
 export const editProductService = async (id, product) => {
   return(
     new Promise(async (res, rej) => {
@@ -37,11 +37,12 @@ export const editProductService = async (id, product) => {
         const newProduct = await actualizarProducto(id, product)
         res(newProduct)
       }catch(error){
+        console.log(error, "en Servicio")
         rej(error)
       }
     })
   )
-}*/
+}
 
 export const getAllProductsService = async () => {
   return(

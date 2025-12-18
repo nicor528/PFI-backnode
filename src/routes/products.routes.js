@@ -2,6 +2,7 @@ import express from "express"
 import {
     addProduct,
     deleteProduct,
+    editProduct,
     getAllProducts,
     getProductById
 } from "../controllers/products.controllers.js"
@@ -17,7 +18,7 @@ routes.post("/products/create",authentication, addProduct)
 
 routes.delete("/products/:id",authentication, deleteProduct)
 
-//routes.put("/products/:id", editProduct)
+routes.put("/products/:id", editProduct)
 
 //routes.post("/products", )
 

@@ -8,9 +8,9 @@ export function obtenerProducto(id){
       const docSnap = await getDoc(docRef);
 
       if (docSnap.exists()) {
-        console.log("Snap data: ", docSnap)
-        console.log("Document ID:", docSnap.id);
-        console.log("Document data:", docSnap.data());
+        //console.log("Snap data: ", docSnap)
+        //console.log("Document ID:", docSnap.id);
+        //console.log("Document data:", docSnap.data());
         res(docSnap.data())
       } else {
         // docSnap.data() will be undefined in this case
@@ -31,14 +31,14 @@ export function obtenerProductos(){
     new Promise(async (res, rej) => {
       try{
         const querySnapshot = await getDocs(collection(db, "products"));
-        console.log("Snap completa: ", querySnapshot)
+        //console.log("Snap completa: ", querySnapshot)
         const productos = []
         querySnapshot.forEach((doc) => {
           // doc.data() is never undefined for query doc snapshots
-          console.log(doc.id, " => ", doc.data());
+          //console.log(doc.id, " => ", doc.data());
           productos.push({...doc.data(), id: doc.id}) 
         });
-        console.log(productos)
+        //console.log(productos)
         res(productos)
       }catch(error){
         console.log(error)
@@ -54,7 +54,7 @@ export function agregarProducto(producto){
     new Promise(async (res, rej) => {
         try{
           const docRef = await addDoc(collection(db, "products"), producto);
-          console.log("Doc ID: ", docRef.id, "Producto: ", docRef)
+          //console.log("Doc ID: ", docRef.id, "Producto: ", docRef)
           res({...producto, id: docRef.id})
         }catch(error){
           console.log(error)
@@ -66,7 +66,7 @@ export function agregarProducto(producto){
 }
 
 //agregarProducto({nombre: "yerba", categoria: "infusion", precio: 200})
-/*
+
 export function actualizarProducto(id, producto){
   return(
     new Promise(async (res, rej) => {
@@ -74,16 +74,16 @@ export function actualizarProducto(id, producto){
         await updateDoc(doc(db, "products", id), {
           ...producto
         })
-        console.log("producto actualizado")
+        //console.log("producto actualizado")
         res({})
       }catch(error){
-        console.log(error)
+        console.log(error, "en modelo")
         rej(error)
       }
     })
   )
 
-}*/
+}
 
 //actualizarProducto({id: "6VOeGkGEHLxBrdU3QVzV", precio: 220})
 
